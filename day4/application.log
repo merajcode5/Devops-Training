@@ -1,0 +1,10 @@
+INFO Login Successful
+INFO Dashboard Loaded
+WARNING High CPU Usage
+ERROR Database Timeout
+INFO Request Completed
+ERROR Service Restarted
+INFO Deployment Successful
+WARNING Low Disk Space
+ERROR API Connection Failed
+INFO Logout Successful

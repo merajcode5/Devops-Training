@@ -1,0 +1,10 @@
+INFO Server Started
+INFO User Login
+WARNING CPU High
+ERROR Database Connection Failed
+INFO Backup Started
+ERROR Disk Full
+INFO Deployment Successful
+WARNING Memory Usage High
+ERROR Service Stopped
+INFO Server Shutdown
