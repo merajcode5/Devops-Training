@@ -1,0 +1,15 @@
+INFO Application Started
+INFO Database Connected
+INFO User Login Successful
+WARNING High CPU Usage
+INFO Request Completed
+ERROR Database Connection Failed
+INFO Service Restarted
+WARNING Memory Usage High
+ERROR API Connection Failed
+INFO Deployment Successful
+ERROR Disk Space Low
+INFO Backup Completed
+WARNING High Memory Usage
+ERROR Database Timeout
+INFO Application Running

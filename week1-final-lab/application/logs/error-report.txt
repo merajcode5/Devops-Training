@@ -1,0 +1,7 @@
+ERROR Database Connection Failed
+ERROR API Connection Failed
+ERROR Disk Space Low
+ERROR Database Timeout
+WARNING High CPU Usage
+WARNING Memory Usage High
+WARNING High Memory Usage
