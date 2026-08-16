@@ -1,0 +1,160 @@
+meraj@mohammed-vmwarevirtualplatform:~$ ls
+Desktop          Downloads              Music          Pictures     Public     test     Videos
+devops-practice  first-shell-script.sh  myfirstfile    problem1.sh  snap       testlog
+Documents        linuxPractice          nodehealth.sh  problem2.sh  Templates  test.sh
+meraj@mohammed-vmwarevirtualplatform:~$ cd devops-practice/
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice$ ls
+a.txt  AWS  b.txt  c.txt  day3  day4  day5  day6  Devops  logs  notes.txt  projects  report.pdf  scripts  todo.tx
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice$ cd day6
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/day6$ ls
+ project           projectconfig.yaml   project.tar      project.zip   website
+'project?app.py'   projectreadme.md     project.tar.gz   restore       website-backup.tar.gz
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/day6$ cd ..
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice$ mkdir week1-final-lab
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice$ cd week1-final-lab
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ mkdir -p application/{logs,config,backup,scripts}
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ tree
+.
+└── application
+    ├── backup
+    ├── config
+    ├── logs
+    └── scripts
+
+6 directories, 0 files
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ touch application/config/app.conf
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ touch application/config/database.config
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ touch application/scripts//deply.sh
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ touch application/scchealthcheck.sh
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ touch application/logs/application.log
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ touch application/logs/access.log
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ nano application/logs/application.log 
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ cat application/logs/application.log 
+INFO Application Started
+INFO Database Connected
+INFO User Login Successful
+WARNING High CPU Usage
+INFO Request Completed
+ERROR Database Connection Failed
+INFO Service Restarted
+WARNING Memory Usage High
+ERROR API Connection Failed
+INFO Deployment Successful
+ERROR Disk Space Low
+INFO Backup Completed
+WARNING High Memory Usage
+ERROR Database Timeout
+INFO Application Running
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ grep "ERROR" application/logs/application.log 
+ERROR Database Connection Failed
+ERROR API Connection Failed
+ERROR Disk Space Low
+ERROR Database Timeout
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ grep "ERROR" application/logs/application.log | wc -1
+wc: invalid option -- '1'
+Try 'wc --help' for more information.
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ grep "ERROR" application/logs/application.log | wc -l
+4
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ grep "WARNING" application/logs/application.log 
+WARNING High CPU Usage
+WARNING Memory Usage High
+WARNING High Memory Usage
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ grep "WARNING" application/logs/application.log | wc-l
+wc-l: command not found
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ grep "WARNING" application/logs/application.log | wc -l
+3
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ grep -n  "ERROR" application/logs/application.log 
+6:ERROR Database Connection Failed
+9:ERROR API Connection Failed
+11:ERROR Disk Space Low
+14:ERROR Database Timeout
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ grep "ERROR" application/logs/application.log > application/logs/error-report.txt
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ cat application/logs/error-report.txt 
+ERROR Database Connection Failed
+ERROR API Connection Failed
+ERROR Disk Space Low
+ERROR Database Timeout
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ grep "WARNING" application/logs/application.log >> application/logs/error-report.txt 
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ cat application/logs/error-report.txt 
+ERROR Database Connection Failed
+ERROR API Connection Failed
+ERROR Disk Space Low
+ERROR Database Timeout
+WARNING High CPU Usage
+WARNING Memory Usage High
+WARNING High Memory Usage
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ find application/-name "*.log"
+find: ‘application/-name’: No such file or directory
+find: ‘*.log’: No such file or directory
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ find application/ -name "*.log"
+application/logs/access.log
+application/logs/application.log
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ find application/ -name "*.conf"
+application/config/app.conf
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ find application/ -name "*.sh"
+application/scchealthcheck.sh
+application/scripts/deply.sh
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ grep -r "Database" application/
+application/logs/error-report.txt:ERROR Database Connection Failed
+application/logs/error-report.txt:ERROR Database Timeout
+application/logs/application.log:INFO Database Connected
+application/logs/application.log:ERROR Database Connection Failed
+application/logs/application.log:ERROR Database Timeout
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ git push 
+Username for 'https://github.com': merajcode5
+Password for 'https://merajcode5@github.com': 
+To https://github.com/merajcode5/Devops-Training.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/merajcode5/Devops-Training.git'
+hint: Updates were rejected because the remote contains work that you do not                                      
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ git add .
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ git commit -m "Day7 lab for devops related duties on linux"
+[main 7418783] Day7 lab for devops related duties on linux
+ 7 files changed, 22 insertions(+)
+ create mode 100644 week1-final-lab/application/config/app.conf
+ create mode 100644 week1-final-lab/application/config/database.config
+ create mode 100644 week1-final-lab/application/logs/access.log
+ create mode 100644 week1-final-lab/application/logs/application.log
+ create mode 100644 week1-final-lab/application/logs/error-report.txt
+ create mode 100644 week1-final-lab/application/scchealthcheck.sh
+ create mode 100644 week1-final-lab/application/scripts/deply.sh
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ git push
+To https://github.com/merajcode5/Devops-Training.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/merajcode5/Devops-Training.git'
+hint: Updates were rejected because the remote contains work that you do not                                      
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ ^[[200~git pull origin main --rebase
+
+git: command not found
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ ~
+bash: /home/meraj: Is a directory
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ git pull origin main --rebase
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (4/4), 1.68 KiB | 572.00 KiB/s, done.
+From https://github.com/merajcode5/Devops-Training
+ * branch            main       -> FETCH_HEAD
+   df17c71..372b8ce  main       -> origin/main
+Successfully rebased and updated refs/heads/main.
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ git push origin main
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (9/9), 1.02 KiB | 174.00 KiB/s, done.
+Total 9 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/merajcode5/Devops-Training.git
+   372b8ce..1b2917c  main -> main
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ nano notes.txt
+meraj@mohammed-vmwarevirtualplatform:~/d
