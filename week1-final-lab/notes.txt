@@ -158,3 +158,123 @@ To https://github.com/merajcode5/Devops-Training.git
    372b8ce..1b2917c  main -> main
 meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ nano notes.txt
 meraj@mohammed-vmwarevirtualplatform:~/d
+meraj@mohammed-vmwarevirtualplatform:~$ ls
+Desktop          Downloads              Music          Pictures     Public     test     Videos
+devops-practice  first-shell-script.sh  myfirstfile    problem1.sh  snap       testlog
+Documents        linuxPractice          nodehealth.sh  problem2.sh  Templates  test.sh
+meraj@mohammed-vmwarevirtualplatform:~$ cd devops-practice/
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice$ ls
+a.txt  b.txt  day3  day5  Devops  notes.txt  report.pdf  todo.tx
+AWS    c.txt  day4  day6  logs    projects   scripts     week1-final-lab
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice$ cd week1-final-lab/
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ ls
+application  notes.txt
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ grep "ERROR" application/logs/application.log  | wc -l
+4
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ tail -f application/logs/application.log 
+ERROR Database Connection Failed
+INFO Service Restarted
+WARNING Memory Usage High
+ERROR API Connection Failed
+INFO Deployment Successful
+ERROR Disk Space Low
+INFO Backup Completed
+WARNING High Memory Usage
+ERROR Database Timeout
+INFO Application Running
+q
+
+^C
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ tail -f application/logs/application.log 
+ERROR Database Connection Failed
+INFO Service Restarted
+WARNING Memory Usage High
+ERROR API Connection Failed
+INFO Deployment Successful
+ERROR Disk Space Low
+INFO Backup Completed
+WARNING High Memory Usage
+ERROR Database Timeout
+INFO Application Running
+INFO NEW DEPLOYMENT Started
+^C
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ tar -czvf application-backup.tar.gz application/
+application/
+application/backup/
+application/scchealthcheck.sh
+application/scripts/
+application/scripts/deply.sh
+application/config/
+application/config/database.config
+application/config/app.conf
+application/logs/
+application/logs/error-report.txt
+application/logs/access.log
+application/logs/application.log
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ ls -lh
+total 20K
+drwxrwxr-x 6 meraj meraj 4.0K Aug 16 08:09 application
+-rw-rw-r-- 1 meraj meraj  596 Aug 17 09:10 application-backup.tar.gz
+-rw-rw-r-- 1 meraj meraj 9.2K Aug 16 08:12 notes.txt
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ tar -tzvf application
+tar (child): application: Cannot read: Is a directory
+tar (child): At beginning of tape, quitting now
+tar (child): Error is not recoverable: exiting now
+
+gzip: stdin: unexpected end of file
+tar: Child returned status 2
+tar: Error is not recoverable: exiting now
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ tar -tzvf application-backup.tar.gz 
+drwxrwxr-x meraj/meraj       0 2026-08-16 08:09 application/
+drwxrwxr-x meraj/meraj       0 2026-08-14 15:37 application/backup/
+-rw-rw-r-- meraj/meraj       0 2026-08-16 08:09 application/scchealthcheck.sh
+drwxrwxr-x meraj/meraj       0 2026-08-16 08:09 application/scripts/
+-rw-rw-r-- meraj/meraj       0 2026-08-16 08:09 application/scripts/deply.sh
+drwxrwxr-x meraj/meraj       0 2026-08-16 08:09 application/config/
+-rw-rw-r-- meraj/meraj       0 2026-08-16 08:09 application/config/database.config
+-rw-rw-r-- meraj/meraj       0 2026-08-16 08:09 application/config/app.conf
+drwxrwxr-x meraj/meraj       0 2026-08-16 08:09 application/logs/
+-rw-rw-r-- meraj/meraj     180 2026-08-16 08:09 application/logs/error-report.txt
+-rw-rw-r-- meraj/meraj       0 2026-08-16 08:09 application/logs/access.log
+-rw-rw-r-- meraj/meraj     404 2026-08-17 09:09 application/logs/application.log
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ mkdir restore
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ tar -xzvf application-backup.tar.gz -C restore/
+application/
+application/backup/
+application/scchealthcheck.sh
+application/scripts/
+application/scripts/deply.sh
+application/config/
+application/config/database.config
+application/config/app.conf
+application/logs/
+application/logs/error-report.txt
+application/logs/access.log
+application/logs/application.log
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ tree restore/
+restore/
+└── application
+    ├── backup
+    ├── config
+    │   ├── app.conf
+    │   └── database.config
+    ├── logs
+    │   ├── access.log
+    │   ├── application.log
+    │   └── error-report.txt
+    ├── scchealthcheck.sh
+    └── scripts
+        └── deply.sh
+
+6 directories, 7 files
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ du -sh application
+28K     application
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           387M  2.3M  385M   1% /run
+/dev/sda1        20G   12G  7.1G  63% /
+tmpfs           1.9G     0  1.9G   0% /dev/shm
+tmpfs           5.0M  8.0K  5.0M   1% /run/lock
+tmpfs           387M  124K  387M   1% /run/user/1000
+/dev/sr0        3.3G  3.3G     0 100% /media/meraj/Lubuntu 24.04.4 LTS amd64
+meraj@mohammed-vmwarevirtualplatform:~/devops-practice/week1-final-lab$ 
